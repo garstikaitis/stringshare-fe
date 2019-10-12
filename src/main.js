@@ -3,6 +3,8 @@ import axios from 'axios';
 import App from './App.vue';
 import router from './router';
 import store from './vuex/store';
+import './components';
+import './plugins/element.js'
 
 Vue.config.productionTip = false;
 
@@ -15,15 +17,6 @@ axios.defaults.baseURL = process.env.VUE_APP_API_URL;
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
-
-const files = require.context('./', true, /\.vue$/i);
-files.keys().map(key => Vue.component(
-  key
-    .split('/')
-    .pop()
-    .split('.')[0],
-  files(key).default,
-));
 
 new Vue({
   router,
