@@ -1,27 +1,32 @@
 import Vue from 'vue';
-import ApolloClient from 'apollo-boost';
-import VueApollo from 'vue-apollo';
+import axios from 'axios';
 import App from './App.vue';
 import router from './router';
-
-const apolloClient = new ApolloClient({
-  // You should use an absolute URL here
-  uri: 'http://stringshare.test/graphql',
-  // fetchOptions: {
-  //   mode: 'cors',
-  // },
-});
-
-Vue.use(VueApollo);
-
-const apolloProvider = new VueApollo({
-  defaultClient: apolloClient,
-});
+import store from './vuex/store';
 
 Vue.config.productionTip = false;
 
+axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+
+/**
+ * The following block of code may be used to automatically register your
+ * Vue components. It will recursively scan this directory for the Vue
+ * components and automatically register them with their "basename".
+ *
+ * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ */
+
+const files = require.context('./', true, /\.vue$/i);
+files.keys().map(key => Vue.component(
+  key
+    .split('/')
+    .pop()
+    .split('.')[0],
+  files(key).default,
+));
+
 new Vue({
   router,
-  apolloProvider,
+  store,
   render: h => h(App),
 }).$mount('#app');
