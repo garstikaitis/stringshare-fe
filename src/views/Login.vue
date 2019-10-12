@@ -8,6 +8,7 @@
 
 <script>
 import axios from "axios";
+import { authActions } from "@/vuex/helpers";
 export default {
   data() {
     return {
@@ -16,16 +17,13 @@ export default {
     };
   },
   methods: {
+    ...authActions,
     async login() {
-      const { data } = await axios.post(
-        "http://stringshare.test/graphql/login",
-        {
-          email: this.email,
-          password: this.password
-        }
-      );
-      if (data.success) {
-        window.localStorage.setItem("token", data.token);
+      const { success } = await this.logInUser({
+        email: this.email,
+        password: this.password
+      });
+      if (success) {
         window.location.reload();
       }
     }
