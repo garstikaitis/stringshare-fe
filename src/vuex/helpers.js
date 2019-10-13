@@ -17,3 +17,12 @@ export const authComputed = {
 };
 
 export const authActions = mapActions('auth', ['logInUser']);
+
+// Enums helpers
+export const enumsComputed = {
+  ...mapState('enums', {
+    genres: state => state.genres,
+  }),
+};
+
+export const enumsActions = mapActions('enums', ['fetchGenres']);
