@@ -27,6 +27,7 @@
 import axios from "axios";
 import { authActions } from "@/vuex/helpers";
 export default {
+  name: "Login",
   data() {
     return {
       email: "",

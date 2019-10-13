@@ -8,7 +8,7 @@
 <script>
 import { authComputed } from "@/vuex/helpers";
 export default {
-  name: "Dashboard",
+  name: "Proposals",
   computed: {
     ...authComputed
   },
