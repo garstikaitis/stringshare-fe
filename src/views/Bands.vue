@@ -2,7 +2,7 @@
   <div>
     <ss-navigation />
     <div class="flex items-center justify-between">
-      <h1 class="text-xl text-gray-700 my-5">Bands</h1>
+      <h1 class="text-xl text-gray-700">Bands</h1>
       <el-select multiple collapse-tags v-model="selectedGenre" placeholder="Select">
         <el-option
           v-for="(genre, index) in ['All', ...genres]"
@@ -14,7 +14,7 @@
     </div>
     <div class="flex flex-wrap -mx-2">
       <div v-for="band in bands" :key="band.id" class="w-1/3 px-2">
-        <router-link :to="{name: 'band', params: band.id}">
+        <router-link :to="{name: 'band', params: { id: band.id, band }}">
           <el-card class="cursor-pointer" :body-style="{ padding: '0px' }">
             <img :src="band.logo" />
             <div class="m-4 flex items-center width-100 justify-between">

@@ -15,27 +15,33 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue'),
+      component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue'),
     },
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import(/* webpackChunkName: "dashboard" */ './views/Dashboard.vue'),
+      component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
     },
     {
       path: '/bands',
       name: 'bands',
-      component: () => import(/* webpackChunkName: "bands" */ './views/Bands.vue'),
+      component: () => import(/* webpackChunkName: "bands" */ '@/views/Bands.vue'),
+      // children: [],
+    },
+    {
+      path: '/bands/:id',
+      name: 'band',
+      component: () => import(/* webpackChunkName: "band" */ '@/views/Band.vue'),
     },
     {
       path: '/venues',
       name: 'venues',
-      component: () => import(/* webpackChunkName: "venues" */ './views/Venues.vue'),
+      component: () => import(/* webpackChunkName: "venues" */ '@/views/Venues.vue'),
     },
     {
       path: '/proposals',
       name: 'proposals',
-      component: () => import(/* webpackChunkName: "proposals" */ './views/Proposals.vue'),
+      component: () => import(/* webpackChunkName: "proposals" */ '@/views/Proposals.vue'),
     },
   ],
 });

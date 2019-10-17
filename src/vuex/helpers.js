@@ -26,3 +26,16 @@ export const enumsComputed = {
 };
 
 export const enumsActions = mapActions('enums', ['fetchGenres']);
+
+// Proposals helpers
+export const proposalsActions = mapActions('proposals', ['addProposal']);
+
+// Venues helpers
+export const venuesComputed = {
+  ...mapState('venues', {
+    venues: state => state.venues,
+  }),
+};
+
+// Venues actions
+export const venuesActions = mapActions('venues', ['fetchVenues']);

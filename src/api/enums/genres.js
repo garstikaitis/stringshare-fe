@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-const getGenres = () => axios.get('/genres');
+const getGenres = () => axios.get('/enums/genres');
 
 export { getGenres };

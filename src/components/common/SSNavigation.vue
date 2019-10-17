@@ -1,5 +1,5 @@
 <template>
-  <div class="flex py-4 items-center w-100 justify-between">
+  <div class="flex py-4 items-center w-100 justify-between my-5">
     <div>
       <img class="h-10" src="@/assets/logo_symbol.png" />
     </div>
