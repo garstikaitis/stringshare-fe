@@ -6,7 +6,10 @@ export const state = {
   token: window.localStorage.getItem('token') || null,
 };
 
-export const getters = {};
+export const getters = {
+  // eslint-disable-next-line no-shadow
+  userIsLoggedIn: state => !!state.user,
+};
 
 export const actions = {
   // eslint-disable-next-line no-shadow
@@ -28,6 +31,10 @@ export const actions = {
       // Return user object
       return data;
     });
+  },
+  logOutUser({ commit }) {
+    setAuthHeaders({ token: null });
+    commit('SET_USER', { key: 'user', newValue: null });
   },
 };
 

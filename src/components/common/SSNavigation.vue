@@ -42,26 +42,49 @@
             'text-purple-300': isHovered === 'proposals',
         }"
       >Proposals</router-link>
-      <el-avatar
-        size="small"
-        src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
-      ></el-avatar>
-      <i class="el-icon-caret-bottom ml-2"></i>
+      <div class="flex items-center relative" @click="showOverlay = !showOverlay">
+        <el-avatar
+          size="small"
+          src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
+        ></el-avatar>
+        <i class="el-icon-caret-bottom ml-2"></i>
+        <el-card class="absolute nav-overlay" v-if="showOverlay">
+          <span @click="handleLogOutUser" class="text-gray-600 text-sm">Logout</span>
+        </el-card>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { authComputed } from "@/vuex/helpers";
+import { authComputed, authActions } from "@/vuex/helpers";
 export default {
   name: "SSNavigation",
   data() {
     return {
-      isHovered: ""
+      isHovered: "",
+      showOverlay: false
     };
   },
   computed: {
     ...authComputed
+  },
+  methods: {
+    ...authActions,
+    handleLogOutUser() {
+      if (this.showOverlay) {
+        this.logOutUser();
+        this.$router.push({ name: "login" });
+      }
+    }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.nav-overlay {
+  top: 40px;
+  right: 0;
+  z-index: 10;
+}
+</style>

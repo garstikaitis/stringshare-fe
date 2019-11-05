@@ -16,7 +16,7 @@ export const authComputed = {
   }),
 };
 
-export const authActions = mapActions('auth', ['logInUser']);
+export const authActions = mapActions('auth', ['logInUser', 'logOutUser']);
 
 // Enums helpers
 export const enumsComputed = {

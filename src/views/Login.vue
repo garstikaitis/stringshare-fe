@@ -43,9 +43,7 @@ export default {
         email: this.email,
         password: this.password
       });
-      if (success) {
-        this.$router.push({ name: "dashboard" });
-      }
+      if (success) this.$router.push({ name: "dashboard" });
       this.isLoading = false;
     }
   }
