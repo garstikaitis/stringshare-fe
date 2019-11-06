@@ -12,6 +12,7 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
+      redirect: '/dashboard',
     },
     {
       path: '/login',
@@ -36,7 +37,7 @@ const router = new Router({
       // children: [],
     },
     {
-      path: '/bands/:id',
+      path: '/bands/:slug',
       name: 'band',
       component: () => import(/* webpackChunkName: "band" */ '@/views/Band.vue'),
       meta: {
@@ -68,8 +69,6 @@ router.beforeResolve((routeTo, routeFrom, next) => {
   );
 
   const userIsLoggedIn = store.getters['auth/userIsLoggedIn'];
-
-  console.log(requiresUserToBeLoggedIn);
 
   if (requiresUserToBeLoggedIn && !userIsLoggedIn) {
     next({ name: 'login' });

@@ -9,7 +9,6 @@ export const getters = {};
 export const actions = {
   async addProposal({ commit }, { band, venue }) {
     const { data } = await postProposal({ band, venue });
-    console.log(data);
   },
 };
 
