@@ -14,9 +14,9 @@
     </div>
     <div class="flex flex-wrap -mx-2">
       <div v-for="band in bands" :key="band.id" class="w-1/3 px-2">
-        <router-link :to="{name: 'band', params: { id: band.id, band }}">
+        <router-link :to="{name: 'band', params: { slug: band.slug, band }}">
           <el-card class="cursor-pointer" :body-style="{ padding: '0px' }">
-            <img :src="band.logo" />
+            <img class="h-64 w-full object-cover" :src="band.logo" />
             <div class="m-4 flex items-center width-100 justify-between">
               <div class="text-lg">{{ band.name }}</div>
               <div>
