@@ -1,4 +1,4 @@
-import { authenticateUser } from './login';
+import { authenticateUser, fetchUser } from './login';
 import { setAuthHeaders } from './set-auth-headers';
 
-export { authenticateUser, setAuthHeaders };
+export { authenticateUser, setAuthHeaders, fetchUser };

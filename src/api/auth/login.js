@@ -6,4 +6,6 @@ const authenticateUser = ({
   password = requiredParam('password'),
 } = {}) => axios.post('/login', { email, password });
 
-export { authenticateUser };
+const fetchUser = ({ userId = requiredParam('userId') } = {}) => axios.get(`/users/${userId}`);
+
+export { authenticateUser, fetchUser };

@@ -12,11 +12,15 @@
           <el-input class="my-2" v-model="email" placeholder="E.g ac@dc.com" />
           <label class="flex">Password</label>
           <el-input class="my-2" v-model="password" type="password" show-password />
-          <el-divider />
           <el-button v-if="isLoading" type="primary" class="w-full">
             <el-spinner :radius="30" />
           </el-button>
           <el-button @click="login" v-else type="primary" class="w-full">Sign in</el-button>
+          <el-divider />
+          <p class="text-gray-400 text-center">OR</p>
+          <el-button type="primary" class="w-full">
+            <a href="http://stringshare.test/api/login-with-spotify">Sign in with Spotify</a>
+          </el-button>
         </el-card>
       </div>
     </div>
