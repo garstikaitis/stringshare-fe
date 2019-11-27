@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import { setAuthHeaders, fetchUser } from '@/api/auth';
 import Home from './views/Home.vue';
 import store from '@/vuex/store';
 
@@ -25,6 +26,16 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard.vue'),
       meta: {
         requiresUserToBeLoggedIn: true,
+        canLoginThroughToken: true,
+      },
+      beforeEnter: (routeTo, routeFrom, next) => {
+        const { token, userId } = routeTo.query;
+        if (!token) return next();
+        setAuthHeaders({ token });
+        fetchUser({ userId }).then(({ data }) => {
+          store.commit('auth/SET_USER', { key: 'user', newValue: data.user });
+          next();
+        });
       },
     },
     {
@@ -63,7 +74,7 @@ const router = new Router({
   ],
 });
 
-router.beforeResolve((routeTo, routeFrom, next) => {
+router.beforeResolve(async (routeTo, routeFrom, next) => {
   const requiresUserToBeLoggedIn = routeTo.matched.some(
     record => record.meta.requiresUserToBeLoggedIn,
   );
