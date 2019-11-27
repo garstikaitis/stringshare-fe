@@ -4,10 +4,14 @@ import { mapState, mapActions } from 'vuex';
 export const bandsComputed = {
   ...mapState('bands', {
     bands: state => state.bands,
+    band: state => ({
+      band: state.band,
+      isLoading: state.bandIsLoading,
+    }),
   }),
 };
 
-export const bandsActions = mapActions('bands', ['fetchBands']);
+export const bandsActions = mapActions('bands', ['fetchBands', 'fetchBand']);
 
 // Auth helpers
 export const authComputed = {

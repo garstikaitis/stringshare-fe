@@ -1,3 +1,3 @@
-import { getBands } from './bands';
+import { getBands, getBand } from './bands';
 
-export { getBands };
+export { getBands, getBand };
