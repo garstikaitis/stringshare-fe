@@ -39,16 +39,3 @@ export const venuesComputed = {
 
 // Venues actions
 export const venuesActions = mapActions('venues', ['fetchVenues']);
-
-// Streaming helpers
-export const streamingComputed = {
-  ...mapState('streaming', {
-    streaming: state => ({
-      song: state.song,
-      songLoaded: state.songLoaded,
-    }),
-  }),
-};
-
-// Streaming actions
-export const streamingActions = mapActions('streaming', ['fetchSong']);
