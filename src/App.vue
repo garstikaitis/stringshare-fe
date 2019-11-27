@@ -22,4 +22,8 @@ body {
 .router-link-exact-active {
   color: theme("colors.purple.700") !important;
 }
+
+.el-loading-spinner {
+  right: -50%;
+}
 </style>
