@@ -74,7 +74,7 @@ const router = new Router({
   ],
 });
 
-router.beforeResolve(async (routeTo, routeFrom, next) => {
+router.beforeResolve((routeTo, routeFrom, next) => {
   const requiresUserToBeLoggedIn = routeTo.matched.some(
     record => record.meta.requiresUserToBeLoggedIn,
   );
